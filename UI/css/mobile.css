@@ -1,0 +1,41 @@
+@media screen and (max-width: 768px) {
+  .right {
+    background: #333;
+    color: #fff;
+  }
+  #logo {
+    font-size: 1.5rem;
+    margin-top: -6px;
+  }
+  .l-heading {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .lead {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+  #navbar {
+    display: none;
+  }
+  #showcase{
+    margin-top:0px;
+    height: 50vh;
+    padding-top:70px; 
+  }
+  #showcase .showcase-content {
+  display: block;
+}
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-evenly;
+  }
+}
