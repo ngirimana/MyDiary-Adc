@@ -1,0 +1,183 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+.text-primary {
+  color: #93cb52;
+  padding: 0.75rem;
+  padding-right: 0;
+}
+.btn {
+  display: inline-block;
+  color: #fff;
+  background: #93cb52;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 2rem;
+  border-radius: 5px;
+}
+.btn:hover {
+  background: #74b436;
+}
+.m-heading {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+.l-heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  text-align: center;
+}
+.lead {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+}
+#navbar {
+  height: 50px;
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: #fff;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 0.5rem;
+  opacity: 0.9;
+}
+#navbar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+#navbar ul li a {
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  margin: 0 0.25rem;
+}
+#navbar ul li a:hover {
+  background: #93cb52;
+  border-radius: 50%;
+}
+.navbtn {
+  padding: 10px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.right h1 {
+  float: right;
+  padding: 0.8rem;
+}
+
+/*side nv*/
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  border-bottom: #444 dotted 2px;
+}
+
+.sidenav a:hover {
+  color: #93cb52;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  border: none;
+}
+@media screen and (min-width: 769px) {
+  .right {
+    display: none;
+  }
+}
+@media screen and (min-width: 1440px) {
+  body {
+    width: 80%;
+    margin: 0% 10%;
+  }
+}
+
+/*showcase8*/
+#showcase {
+  background: url(../img/diary1.jpg) no-repeat center center/cover;
+  color: #fff;
+  height: 100vh;
+  width: 100%;
+}
+#showcase .showcase-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+}
+#how-it-works {
+  padding-bottom: 70px;
+}
+#how-it-works h2 {
+  text-align: center;
+}
+.items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-evenly;
+}
+.items .item {
+  padding: 20px;
+}
+.items .item h3 i.fas {
+  font-size: 50px;
+}
+.items .item h3,
+.items .item p {
+  margin-left: 10px;
+}
+.items .item h3 {
+  text-align: center;
+}
+footer {
+  height: 70px;
+  width: 100%;
+  color: #ffffff;
+  background-color: #0b0c0c;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
