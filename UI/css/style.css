@@ -177,7 +177,7 @@ a {
 #user-auth {
   padding-bottom: 70px;
   background: url(../img/diary1.jpg) no-repeat center center/cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 .user-form {
   padding-top: 20px;

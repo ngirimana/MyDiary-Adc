@@ -40,8 +40,9 @@
   }
   #user-auth {
     padding-bottom: 70px;
-    min-height: 140vh;
+    min-height: 70vh;
   }
+
   .user-form {
     padding-top: 10px;
     max-width: 80%;
