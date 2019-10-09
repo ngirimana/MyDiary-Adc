@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+  font-family: "Roboto", sans-serif;
 }
 a {
   text-decoration: none;
@@ -171,6 +172,80 @@ a {
 }
 .items .item h3 {
   text-align: center;
+}
+/* from */
+#user-auth {
+  padding-bottom: 70px;
+  background: url(../img/diary1.jpg) no-repeat center center/cover;
+  height: 100vh;
+}
+.user-form {
+  padding-top: 20px;
+  max-width: 40%;
+  margin: 0 auto;
+  font-family: sans-serif;
+  border-radius: 10px;
+  color: white;
+}
+.user-form h2 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.user-form #signup-form {
+  margin-top: 30px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 0px auto;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  border: 2px solid;
+  background: #fff;
+}
+label {
+  width: 100%;
+  margin: 0px auto;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+input[type="submit"] {
+  width: 30%;
+  padding: 10px;
+  margin: 5px auto;
+  margin-left: 0%;
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  border: 2px solid #d2d9dd;
+  color: white;
+  background: #93cb52;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background: #74b436;
+}
+.user-form p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.user-form p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 1000;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 footer {
   height: 70px;

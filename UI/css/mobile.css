@@ -24,18 +24,96 @@
   #navbar {
     display: none;
   }
-  #showcase{
-    margin-top:0px;
+  #showcase {
+    margin-top: 0px;
     height: 50vh;
-    padding-top:70px; 
+    padding-top: 70px;
   }
   #showcase .showcase-content {
-  display: block;
-}
+    display: block;
+  }
 
   .items {
     display: grid;
     grid-template-columns: 1fr;
+    justify-content: space-evenly;
+  }
+  #user-auth {
+    padding-bottom: 70px;
+    min-height: 140vh;
+  }
+  .user-form {
+    padding-top: 10px;
+    max-width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  .user-form h2 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 0px auto;
+    display: block;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+  label {
+    width: 100%;
+    padding: 5px;
+    margin: 5px auto;
+    margin: 0px auto;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  input[type="submit"] {
+    width: 50%;
+    padding: 5px;
+    margin: 5px auto;
+    margin-left: 0%;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-radius: 8px;
+  }
+
+  .user-form p {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .user-form p a {
+    text-decoration: none;
+    color: white;
+    font-weight: 1000;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    width: 70%;
+  }
+  label {
+    width: 70%;
+  }
+  input[type="submit"] {
+    width: 30%;
+    margin-left: 15%;
+  }
+  .entries {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     justify-content: space-evenly;
   }
 }
