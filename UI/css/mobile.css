@@ -96,6 +96,19 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
   }
+  #entry-form {
+    padding-bottom: 70px;
+    height: 100%;
+    width: 100%;
+  }
+  main-entry-data {
+    width: 100%;
+    margin: 10px auto;
+  }
+  #edit-entry-title {
+    font-size: 1rem;
+   
+  }
 }
 @media screen and (min-width: 501px) and (max-width: 768px) {
   input[type="text"],
