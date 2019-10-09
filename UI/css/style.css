@@ -137,7 +137,7 @@ a {
 #showcase {
   background: url(../img/diary1.jpg) no-repeat center center/cover;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 #showcase .showcase-content {
@@ -247,6 +247,86 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+/* add entry*/
+#entry-form {
+  padding-bottom: 70px;
+  height: 100%;
+  width: 70%;
+  margin: 10px auto;
+  margin-bottom: 0;
+}
+.main-entry-data {
+  width: 70%;
+  margin: 10px auto;
+}
+#edit-entry-title {
+  font-size: 1.5rem;
+  width: 70%;
+  margin: 10px 15%;
+  padding: 5px;
+}
+/* Style the tab */
+.tab {
+  width: 100%;
+  margin: 0px auto;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 0px 0px;
+  border-top: none;
+}
+#entryContent,
+#preview {
+  font-size: 1.2rem;
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+}
+.btnn {
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  color: #fff;
+  background: #93cb52;
+  padding: 0.5rem 2rem;
+  border: none;
+  font-size: 2rem;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.btnn:hover {
+  background-color: #74b436;
+}
+
 footer {
   height: 70px;
   width: 100%;
