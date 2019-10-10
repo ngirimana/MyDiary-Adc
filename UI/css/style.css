@@ -137,7 +137,7 @@ a {
 #showcase {
   background: url(../img/diary1.jpg) no-repeat center center/cover;
   color: #fff;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
 }
 #showcase .showcase-content {
