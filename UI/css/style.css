@@ -19,7 +19,7 @@ a {
   background: #93cb52;
   padding: 0.5rem 2rem;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-radius: 5px;
 }
 .btn:hover {
@@ -318,13 +318,88 @@ input[type="submit"]:hover {
   background: #93cb52;
   padding: 0.5rem 2rem;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-radius: 5px;
   margin-top: 10px;
 }
-
 .btnn:hover {
   background-color: #74b436;
+}
+/* all entries */
+#all-entries {
+  padding-bottom: 70px;
+  height: 100%;
+}
+form.search {
+  margin: auto;
+  max-width: 35%;
+}
+form.search input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  float: left;
+  width: 80%;
+  margin-top: 10px;
+  background: #fff;
+}
+
+form.search button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #93cb52;
+  color: white;
+  font-size: 17px;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search button:hover {
+  background: #74b436
+}
+
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.entries {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+  justify-content: space-evenly;
+  margin: 5px auto;
+}
+.entry-item {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 1rem;
+  border-bottom: #444 solid 1px;
+}
+.entry-item .title {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.entry-item .date {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.entry-item p {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.all-entries-head {
+  margin-left: 10%;
+  width: 80%;
+  margin: 0;
+  text-align: center;
+  padding: 10px;
 }
 
 footer {
