@@ -85,7 +85,23 @@
         quasi quisquam odio molestiae, consequuntur, harum et enim distinctio inventore?
       </p>
       <span> <button onclick="window.location.href = '../html/modifyEntry.html'" class="btn">Edit</button>
-
+        <button class="btn btn-delete"
+          onclick="dialogbox('Are you sure you want to delete this entry?')">Delete</button></span>
+      <div id="dialogbox" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" onclick="closeDialog()">&times;</span>
+            <h2>Delete an entry</h2>
+          </div>
+          <div class="modal-body">
+            <span class="dialog-content dialog-content-ex"></span>
+          </div>
+          <div class="modal-buttons">
+            <input type="button" class="btn decision" value="No" onclick="closeDialog()" />
+            <input type="button" class="btn btn-delete decision" value="Yes" onclick="closeDialog()" />
+          </div>
+        </div>
+      </div>
     </div>
     <footer>
       <p>
@@ -94,7 +110,7 @@
       </p>
     </footer>
   </div>
-  <script src="../js/editor.js"></script>
+  <script src="../js/modal.js"></script>
 </body>
 
 </html>

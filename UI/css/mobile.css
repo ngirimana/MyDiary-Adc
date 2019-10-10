@@ -113,6 +113,9 @@
   margin: 10px auto;
   max-width: 80%;
 }
+.modal-content {
+  width: 90%;
+}
 }
 @media screen and (min-width: 501px) and (max-width: 768px) {
   input[type="text"],
