@@ -146,7 +146,7 @@ a {
   text-align: center;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   padding: 0 2rem;
 }
 #how-it-works {
@@ -356,7 +356,7 @@ form.search button {
 }
 
 form.search button:hover {
-  background: #74b436
+  background: #74b436;
 }
 
 form.search::after {
@@ -400,6 +400,29 @@ form.search::after {
   margin: 0;
   text-align: center;
   padding: 10px;
+}
+.entry-content {
+  width: 80%;
+  height: 100%;
+  padding-bottom: 70px;
+  margin: 10px auto;
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+.entry-content .entry-title {
+  margin-bottom: 20px;
+}
+.entry-content p,
+.entry-content .entry-title {
+  margin-bottom: 10px;
+}
+
+.entry-content p {
+  margin-bottom: 10px;
+}
+.entry-content span button {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 footer {
