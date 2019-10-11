@@ -425,7 +425,7 @@ form.search::after {
   margin-bottom: 20px;
 }
 /* modal */
-.btn-delete{
+.btn-delete {
   background: red;
 }
 .modal-content {
@@ -436,7 +436,7 @@ form.search::after {
   border: 1px solid #888;
   border-radius: 10px;
   width: 40%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
@@ -481,13 +481,53 @@ form.search::after {
 }
 .close:hover,
 .close:focus {
-  color:#93cb52 ;
+  color: #93cb52;
   text-decoration: none;
   cursor: pointer;
 }
 
 .decision {
   margin-bottom: 10px;
+}
+.user {
+  padding-bottom: 70px;
+  height: 100%;
+}
+.user h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+.user-profile {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  justify-content: center;
+}
+.user-profile .user-image,
+.user-info {
+  padding-top: 100px;
+}
+.user-profile .user-image img {
+  width: 50%;
+  margin: 10px 25%;
+  border-radius: 50%;
+  border: none;
+}
+.user-profile .user-data {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+.user-settings {
+  width: 50%;
+  margin: 10px auto;
+  text-align: center;
+}
+.user-settings h2 {
+  text-decoration: underline;
+}
+.notify {
+  margin-bottom: 20px;
 }
 footer {
   height: 70px;

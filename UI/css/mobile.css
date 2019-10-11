@@ -107,15 +107,33 @@
   }
   #edit-entry-title {
     font-size: 1rem;
-   
   }
   form.search {
-  margin: 10px auto;
-  max-width: 80%;
-}
-.modal-content {
-  width: 90%;
-}
+    margin: 10px auto;
+    max-width: 80%;
+  }
+  .modal-content {
+    width: 90%;
+  }
+  .user-profile {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+  .user-profile .user-image,
+  .user-info {
+    padding-top: 20px;
+  }
+  .user-profile .user-image img {
+    height: 50%;
+  }
+  .user-profile .user-data {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    margin-left: 70px;
+  }
 }
 @media screen and (min-width: 501px) and (max-width: 768px) {
   input[type="text"],
