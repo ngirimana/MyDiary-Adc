@@ -5,14 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description"
+    content="MyDiary is an online journal where users can pen down their thoughts and feelings." />
+  <meta name="keywords" content="MyDiary,Diary,diary,mydiary" />
   <script src="https://kit.fontawesome.com/1ae30b6763.js"></script>
+  <title>MyDiary|Modify entry</title>
+  <link rel="icon" type="image/png" href="../img/logo.png" />
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile.css">
   <script src="../js/script.js"></script>
-  <title>MyDiary</title>
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -22,9 +23,12 @@
         <span class="text-primary"> <i class="fa fa-book-open"></i>My</span>Diary
       </h1>
       <ul>
-        <li><a href="./index.html" class="">Home</a></li>
-        <li><a href="./html/login.html" class="">Login</a></li>
-        <li><a href="./html/Signup.html" class="">Signup</a></li>
+        <li><a href="../index.html" class="">Home</a></li>
+        <li><a href="./addEntry.html" class="">New entry</a></li>
+        <li><a href="./all-entries.html" class="">Entries</a></li>
+        <li><a href="./user-profile.html" class="">Profile</a></li>
+
+        <li><a href="../index.html" class="">Logout</a></li>
       </ul>
     </nav>
     <div class="right">
@@ -34,8 +38,10 @@
       <div id="mySidenav" class="sidenav">
         <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
         <a href="./index.html" class="">Home</a>
-        <a href="./html/login.html" class="">Login</a>
-        <a href="./html/Signup.html" class="">Signup</a>
+        <a href="./addEntry.html" class="">New entry</a>
+        <a href="./all-entries.html" class="">Entries</a>
+        <a href="./user-profile.html" class="">Profile</a>
+        <a href="../index.html" class="">Logout</a>
 
       </div>
       <span class="navbtn" onclick="openNav()">&#9776;</span>
@@ -99,7 +105,7 @@
           <div id="preview" class="tabcontent">
 
           </div>
-          <button class="btnn">Update</button>
+          <button class="btnn" onclick="window.location.href = '../html/entry-content.html'">Update</button>
         </div>
 
       </div>
