@@ -21,6 +21,7 @@ module.exports = {
     "no-restricted-globals": "off",
     "no-restricted-syntax": "off",
     "no-unreachable": "off",
-    "no-useless-catch": "off"
+    "no-useless-catch": "off",
+    "import/prefer-default-export": "off"
   }
 }
