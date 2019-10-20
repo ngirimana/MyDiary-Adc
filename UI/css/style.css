@@ -55,7 +55,6 @@ a {
   justify-content: space-between;
   z-index: 1;
   padding: 0.5rem;
-  opacity: 0.9;
 }
 #navbar ul {
   display: flex;
@@ -163,9 +162,14 @@ a {
 .items .item {
   padding: 20px;
 }
-.items .item h3 i.fas {
+.items .item h2 i.fas {
   font-size: 50px;
+  text-align: center;
 }
+.items .item span {
+  padding-bottom: 25px;
+}
+
 .items .item h3,
 .items .item p {
   margin-left: 10px;
@@ -418,7 +422,8 @@ form.search::after {
 }
 
 .entry-content p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  word-spacing: 5px;
 }
 .entry-content span button {
   margin-top: 20px;
