@@ -1,0 +1,35 @@
+{
+  "name": "mydiary-adc",
+  "version": "1.0.0",
+  "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngirimana/MyDiary-Adc.git"
+  },
+  "author": "NGIRIMANA Schadrack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngirimana/MyDiary-Adc/issues"
+  },
+  "homepage": "https://github.com/ngirimana/MyDiary-Adc#readme",
+  "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "dotenv": "^8.2.0",
+    "env": "0.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
