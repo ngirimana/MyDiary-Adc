@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import User from '../models/userModel';
 import { generateAuthToken } from '../helpers/token';
 import response from '../helpers/responses';
-import { encryptPassword } from '../helpers/securedPassword';
+import { encryptPassword, decryptPassword } from '../helpers/securedPassword';
 
 dotenv.config();
 export const users = [];
@@ -28,6 +28,22 @@ class UserController {
       userdata: lodash.pick(user, ['id', 'firstName', 'lastName', 'email']),
     };
     return response.successResponse(req, res, 201, 'User created successfully', data);
+  }
+
+  static signIn = (req, res) => {
+    const { email, password } = req.body;
+    const user = users.find((userdata) => (userdata.email === email)
+      && (decryptPassword(password, userdata.password)));
+
+    if (!user) {
+      return response.errorResponse(req, res, 401, 'Incorrect email or password');
+    }
+    const token = generateAuthToken(user.id, user.email);
+    const data = {
+      token,
+      userdata: lodash.pick(user, ['id', 'firstName', 'lastName', 'email']),
+    };
+    return response.successResponse(req, res, 200, 'User signed in successfully', data);
   }
 }
 
