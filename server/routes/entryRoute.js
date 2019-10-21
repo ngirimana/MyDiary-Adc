@@ -7,4 +7,5 @@ const router = express.Router();
 
 
 router.post('/entries', verifyAuth, entryValidation, EntryController.createEntry);
+router.patch('/entries/:entryId', verifyAuth, entryValidation, EntryController.modifyEntry);
 export default router;
