@@ -41,5 +41,16 @@ class EntryController {
 
     return response.successResponse(req, res, 200, 'entry successfully edited', data);
   }
+
+  static getAllentries = (req, res) => {
+    const userData = verifyToken(req.header('x-auth-token'));
+    const data = entries.sort((a, b) => (new Date(b.updatedOn)).getTime()
+      - (new Date(a.updatedOn).getTime()));
+    const yourEntries = data.filter((entry) => entry.userid === userData);
+    if (yourEntries.length === 0) {
+      return response.errorResponse(req, res, 404, 'Your entries  are not found!');
+    }
+    return response.successResponse(req, res, 200, 'Your available entries are: ', yourEntries);
+  };
 }
 export default EntryController;
