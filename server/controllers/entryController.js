@@ -52,5 +52,19 @@ class EntryController {
     }
     return response.successResponse(req, res, 200, 'Your available entries are: ', yourEntries);
   };
+
+  static getSpecificEntry = (req, res) => {
+    const { entryId } = req.params;
+    const userInfos = verifyToken(req.header('x-auth-token'));
+    const uniqueEntry = entries.find((entry) => entry.id === parseInt(entryId, 10));
+    if (isNaN(entryId)) { return notNumber(req, res); }
+    if (!uniqueEntry) {
+      return response.errorResponse(req, res, 404, 'This entry is not fouund');
+    }
+    if (uniqueEntry.userid !== userInfos) {
+      return response.errorResponse(req, res, 403, 'This entry is not yours');
+    }
+    return response.successResponse(req, res, 200, 'Your Entry was found', uniqueEntry);
+  }
 }
 export default EntryController;
