@@ -11,3 +11,8 @@ export const generateAuthToken = (id, email) => {
   }, process.env.SECRETEKEY, { expiresIn: '1d' });
   return token;
 };
+export const verifyToken = (token) => {
+  const mytoken = jwt.verify(token, process.env.SECRETEKEY);
+
+  return mytoken.Id;
+};
