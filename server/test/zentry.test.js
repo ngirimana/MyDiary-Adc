@@ -378,3 +378,89 @@ describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
       });
   });
 });
+describe('7 . DELETE entries ,/api/v1/entries/:entryId', () => {
+  beforeEach((done) => {
+    chai.request(app).post('/api/v1/auth/signin').send({
+      email: 'chadrack@gmail.com',
+      password: 'safari1006',
+    }).then((res) => {
+      userToken = res.body.data.token;
+      done();
+    })
+      .catch((err) => console.log(err));
+  });
+  it('should return id is not number ', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/wrt')
+      .set('x-auth-token', userToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('Entry id should be a number ');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  it('should return id is not found ', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/10')
+      .set('x-auth-token', userToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('This entry is not avaialable');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  beforeEach((done) => {
+    chai.request(app).post('/api/v1/auth/signin').send({
+      email: 'safari@gmail.com',
+      password: 'safari1006',
+    }).then((res) => {
+      notYourToken = res.body.data.token;
+      done();
+    })
+      .catch((err) => console.log(err));
+  });
+  it('should return this entry does not belongs to you ', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/1')
+      .set('x-auth-token', notYourToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal(403);
+        expect(res.body.error).to.equal('This entry doesn\'t belongs to you');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  it('should return entry successfully deleted', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/1')
+      .set('x-auth-token', userToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('entry successfully deleted');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+});

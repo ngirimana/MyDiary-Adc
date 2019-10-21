@@ -66,5 +66,21 @@ class EntryController {
     }
     return response.successResponse(req, res, 200, 'Your Entry was found', uniqueEntry);
   }
+
+  static deleteEntry = (req, res) => {
+    const { entryId } = req.params;
+    const userInfo = verifyToken(req.header('x-auth-token'));
+    const oneEntry = entries.find((uniqueEntry) => uniqueEntry.id === parseInt(entryId, 10));
+    if (isNaN(entryId)) { return notNumber(req, res); }
+    if (!oneEntry) {
+      return response.errorResponse(req, res, 404, 'This entry is not avaialable');
+    }
+    if (oneEntry.userid !== userInfo) {
+      return response.errorResponse(req, res, 403, 'This entry doesn\'t belongs to you');
+    }
+    const index = entries.indexOf(oneEntry);
+    entries.splice(index, 1);
+    return response.successResponse(req, res, 200, 'entry successfully deleted', oneEntry);
+  }
 }
 export default EntryController;
