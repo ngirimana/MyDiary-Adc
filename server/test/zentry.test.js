@@ -143,6 +143,22 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
         console.log(err);
       });
   });
+  it('should return Your entries  are not found!', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries')
+      .set('x-auth-token', userToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('Your entries  are not found!');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   it('should return entry successfully created', (done) => {
     chai.request(app)
       .post('/api/v1/entries')
@@ -242,6 +258,34 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entryId', () => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
         expect(res.body.message).to.equal('entry successfully edited');
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+});
+describe(' 5. GET entries ,/api/v1/entries', () => {
+  beforeEach((done) => {
+    chai.request(app).post('/api/v1/auth/signin').send({
+      email: 'chadrack@gmail.com',
+      password: 'safari1006',
+    }).then((res) => {
+      userToken = res.body.data.token;
+      done();
+    })
+      .catch((err) => console.log(err));
+  });
+  it('should return Your available entries are: ', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries')
+      .set('x-auth-token', userToken)
+      .set('Accept', 'application/json')
+      .then((res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('Your available entries are: ');
         done();
       })
       .catch((err) => {
