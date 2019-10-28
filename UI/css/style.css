@@ -4,15 +4,18 @@ body {
   margin: 0;
   height: 100%;
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
+  color: white;
 }
 .text-primary {
   color: #93cb52;
   padding: 0.75rem;
   padding-right: 0;
 }
+
 .btn {
   display: inline-block;
   color: #fff;
@@ -21,6 +24,7 @@ a {
   border: none;
   font-size: 1.5rem;
   border-radius: 5px;
+  cursor: pointer;
 }
 .btn:hover {
   background: #74b436;
@@ -64,12 +68,12 @@ a {
 #navbar ul li a {
   color: #fff;
   font-size: 1.2rem;
-  padding: 0.75rem;
+  padding: 0.5rem 1rem;
   margin: 0 0.25rem;
 }
 #navbar ul li a:hover {
   background: #93cb52;
-  border-radius: 50%;
+  border-radius: 40px;
 }
 .navbtn {
   padding: 10px;
@@ -198,9 +202,12 @@ a {
 .user-form #signup-form {
   margin-top: 30px;
 }
-input[type="text"],
-input[type="password"],
-input[type="email"],
+#signin-form input[type="text"],
+#signup-form input[type="text"],
+#signin-form input[type="password"],
+#signup-form input[type="password"],
+#signin-form input[type="email"],
+#signup-form input[type="email"],
 textarea {
   width: 100%;
   padding: 10px;
@@ -221,7 +228,8 @@ label {
   font-size: 1.2rem;
   font-weight: 800;
 }
-input[type="submit"] {
+#signin-form input[type="submit"],
+#signup-form input[type="submit"] {
   width: 30%;
   padding: 10px;
   margin: 5px auto;
@@ -334,41 +342,35 @@ input[type="submit"]:hover {
   padding-bottom: 70px;
   height: 100%;
 }
-form.search {
-  margin: auto;
-  max-width: 35%;
+#search-container {
+  width: 50%;
+  margin: 10px auto;
 }
-form.search input[type="text"] {
-  padding: 10px;
-  font-size: 17px;
-  float: left;
+#search-container span {
+  width: 100%;
+}
+#search-container #search-input {
+  font-size: 1rem;
   width: 80%;
-  margin-top: 10px;
-  background: #fff;
-}
-
-form.search button {
-  float: left;
-  width: 20%;
+  margin: 10px auto;
   padding: 10px;
-  margin-top: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+#search-container #search-input:focus {
+  border: rgb(116, 114, 114) solid 1px;
+  box-shadow: 0 4px 8px 0 rgba(4, 245, 56, 0.2),
+    0 6px 20px 0 rgba(2, 250, 2, 0.19);
+}
+#search-container #search-btn {
+  font-size: 1rem;
+  padding: 10px;
   background: #93cb52;
-  color: white;
-  font-size: 17px;
-  border-left: none;
+  border-radius: 5px;
   cursor: pointer;
+  border: none;
 }
-
-form.search button:hover {
-  background: #74b436;
-}
-
-form.search::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .entries {
   display: grid;
   grid-template-columns: 1fr;
@@ -448,7 +450,6 @@ form.search::after {
 .modal-buttons {
   margin-left: 50px;
 }
-/* Modal Header */
 .modal-header {
   padding: 20px;
   background-color: #333;
@@ -456,7 +457,6 @@ form.search::after {
   text-align: center;
   border-radius: 10px 10px 0px 0px;
 }
-/* Modal Body */
 .modal-body {
   padding: 10px;
 }
@@ -530,6 +530,13 @@ form.search::after {
 }
 .user-settings h2 {
   text-decoration: underline;
+}
+#setting {
+  font-size: 1.5rem;
+}
+#setting input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 .notify {
   margin-bottom: 20px;

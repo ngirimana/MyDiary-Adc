@@ -20,10 +20,9 @@
   <div id="container">
     <nav id="navbar">
       <h1 id="logo">
-        <span class="text-primary"> <i class="fa fa-book-open"></i>My</span>Diary
+        <a href="../index.html"> <span class="text-primary"> <i class="fa fa-book-open"></i>My</span>Diary</a>
       </h1>
       <ul>
-        <li><a href="../index.html" class="">Home</a></li>
         <li><a href="./addEntry.html" class="">New Entry</a></li>
         <li><a href="./user-profile.html" class="">Profile</a></li>
         <li><a href="../index.html" class="">Logout</a></li>
@@ -31,11 +30,10 @@
     </nav>
     <div class="right">
       <h1 id="logo">
-        <span class="text-primary"> <i class="fa fa-book-open"></i>My</span>Diary
+        <a href="../index.html"> <span class="text-primary"> <i class="fa fa-book-open"></i>My</span>Diary</a>
       </h1>
       <div id="mySidenav" class="sidenav">
         <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
-        <a href="./index.html" class="">Home</a>
         <a href="./addEntry.html" class="">New entry</a>
         <a href="./user-profile.html" class="">Profile</a>
         <a href="../index.html" class="">Logout</a>
@@ -44,63 +42,70 @@
       <span class="navbtn" onclick="openNav()">&#9776;</span>
     </div>
     <div id="all-entries">
-      <span class="all-entries-head">
+      <div class="all-entries-head">
         <h1>Your entries</h1>
-        <form class="search" action="">
-          <span>
-            <input type="text" placeholder="Search Your Entries" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+        <div id="search-container">
+          <span><input type="text" id="search-input" placeholder="Search your entry here" name="search">
+            <button class="" id="search-btn" type="submit"><i class="fas fa-search"></i></button>
           </span>
-        </form>
-      </span>
+        </div>
+      </div>
       <div class="entries">
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">02/10/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">25/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">22/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">25/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">23/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">25/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">24/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
         <div class="entry-item">
           <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia velit sunt dolore perferendis
             nobis blanditiis.</h3>
           <h4 class="date">Written On : <span class="output">24/09/2019</span></h4>
-          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> Read More</button>
+          <button class="btn" onclick="window.location.href = '../html/entry-content.html'"> <i
+              class="fas fa-eye"></i></button>
         </div>
       </div>
     </div>
