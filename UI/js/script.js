@@ -5,3 +5,5 @@ const openNav = () => {
 const closeNav = () => {
   document.querySelector('#mySidenav').style.width = '0';
 };
+
+
