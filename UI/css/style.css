@@ -550,6 +550,9 @@ input[type="submit"]:hover {
 .notify {
   margin-bottom: 20px;
 }
+.fa-eye{
+   color: #93cb52;
+}
 footer {
   height: 70px;
   width: 100%;
