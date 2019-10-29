@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 class Entry {
-  constructor(id, createOn, userid, title, description, updatedOn) {
-    this.id = id;
+  constructor(slug, createOn, userid, title, description, updatedOn) {
+    this.slug = slug;
     this.createOn = createOn;
     this.userid = userid;
     this.title = title;

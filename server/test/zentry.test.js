@@ -7,6 +7,8 @@ import entries from '../models/entries';
 const { expect } = chai;
 chai.use(chaiHttp);
 let userToken;
+let route;
+let slug;
 const token = '';
 let notYourToken;
 let nonExistToken = jwt.sign({
@@ -166,6 +168,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       .set('Accept', 'application/json')
       .send(entries[0])
       .then((res) => {
+        slug = res.body.data.slug;
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
@@ -177,7 +180,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       });
   });
 });
-describe(' 4. PATCH entries ,/api/v1/entries/:entryId', () => {
+describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
   beforeEach((done) => {
     chai.request(app).post('/api/v1/auth/signin').send({
       email: 'chadrack@gmail.com',
@@ -187,23 +190,6 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entryId', () => {
       done();
     })
       .catch((err) => console.log(err));
-  });
-  it('should return id is not number ', (done) => {
-    chai.request(app)
-      .patch('/api/v1/entries/wrt')
-      .set('x-auth-token', userToken)
-      .set('Accept', 'application/json')
-      .send(entries[5])
-      .then((res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('Entry id should be a number ');
-        done();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   });
   it('should return id is not found ', (done) => {
     chai.request(app)
@@ -227,13 +213,14 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entryId', () => {
       password: 'safari1006',
     }).then((res) => {
       notYourToken = res.body.data.token;
+      route = `/api/v1/entries/${slug}`;
       done();
     })
       .catch((err) => console.log(err));
   });
   it('should return this entry does not belongs to you ', (done) => {
     chai.request(app)
-      .patch('/api/v1/entries/1')
+      .patch(route)
       .set('x-auth-token', notYourToken)
       .set('Accept', 'application/json')
       .send(entries[5])
@@ -249,7 +236,7 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entryId', () => {
   });
   it('should return entry successfully edited', (done) => {
     chai.request(app)
-      .patch('/api/v1/entries/1')
+      .patch(route)
       .set('x-auth-token', userToken)
       .set('Accept', 'application/json')
       .send(entries[5])
@@ -293,7 +280,7 @@ describe(' 5. GET entries ,/api/v1/entries', () => {
       });
   });
 });
-describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
+describe(' 6. GET entries ,/api/v1/entries/:entrySlug', () => {
   beforeEach((done) => {
     chai.request(app).post('/api/v1/auth/signin').send({
       email: 'chadrack@gmail.com',
@@ -303,22 +290,6 @@ describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
       done();
     })
       .catch((err) => console.log(err));
-  });
-  it('should return id is not number ', (done) => {
-    chai.request(app)
-      .get('/api/v1/entries/wrt')
-      .set('x-auth-token', userToken)
-      .set('Accept', 'application/json')
-      .then((res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('Entry id should be a number ');
-        done();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   });
   it('should return id is not found ', (done) => {
     chai.request(app)
@@ -347,7 +318,7 @@ describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
   });
   it('should return this entry does not belongs to you ', (done) => {
     chai.request(app)
-      .get('/api/v1/entries/1')
+      .get(route)
       .set('x-auth-token', notYourToken)
       .set('Accept', 'application/json')
       .then((res) => {
@@ -362,7 +333,7 @@ describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
   });
   it('should return Your Entry was found ', (done) => {
     chai.request(app)
-      .get('/api/v1/entries/1')
+      .get(route)
       .set('x-auth-token', userToken)
       .set('Accept', 'application/json')
       .then((res) => {
@@ -378,7 +349,7 @@ describe(' 6. GET entries ,/api/v1/entries/:entryId', () => {
       });
   });
 });
-describe('7 . DELETE entries ,/api/v1/entries/:entryId', () => {
+describe('7 . DELETE entries ,/api/v1/entries/:entrySlug', () => {
   beforeEach((done) => {
     chai.request(app).post('/api/v1/auth/signin').send({
       email: 'chadrack@gmail.com',
@@ -388,22 +359,6 @@ describe('7 . DELETE entries ,/api/v1/entries/:entryId', () => {
       done();
     })
       .catch((err) => console.log(err));
-  });
-  it('should return id is not number ', (done) => {
-    chai.request(app)
-      .delete('/api/v1/entries/wrt')
-      .set('x-auth-token', userToken)
-      .set('Accept', 'application/json')
-      .then((res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('Entry id should be a number ');
-        done();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   });
   it('should return id is not found ', (done) => {
     chai.request(app)
@@ -433,7 +388,7 @@ describe('7 . DELETE entries ,/api/v1/entries/:entryId', () => {
   });
   it('should return this entry does not belongs to you ', (done) => {
     chai.request(app)
-      .delete('/api/v1/entries/1')
+      .delete(route)
       .set('x-auth-token', notYourToken)
       .set('Accept', 'application/json')
       .then((res) => {
@@ -449,7 +404,7 @@ describe('7 . DELETE entries ,/api/v1/entries/:entryId', () => {
   });
   it('should return entry successfully deleted', (done) => {
     chai.request(app)
-      .delete('/api/v1/entries/1')
+      .delete(route)
       .set('x-auth-token', userToken)
       .set('Accept', 'application/json')
       .then((res) => {

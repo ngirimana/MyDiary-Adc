@@ -22,6 +22,7 @@ module.exports = {
     "no-restricted-syntax": "off",
     "no-unreachable": "off",
     "no-useless-catch": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-useless-escape":"off"
   }
 }
