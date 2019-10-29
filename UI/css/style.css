@@ -381,10 +381,13 @@ input[type="submit"]:hover {
 }
 .entry-item {
   width: 80%;
-  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 10px;
   font-size: 1rem;
   border-bottom: #444 solid 1px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 .entry-item .title {
   font-size: 1rem;
@@ -393,7 +396,13 @@ input[type="submit"]:hover {
 .entry-item .date {
   font-size: 0.8rem;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+.read-more {
+  color: #93cb52;
+  margin-top: 0px;
+  padding: 0 10px;
+  cursor: pointer;
 }
 .entry-item p {
   font-size: 1.8rem;
