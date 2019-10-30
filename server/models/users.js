@@ -83,7 +83,7 @@ const users = [
   // 12 correct data
   {
     firstName: 'rukundo',
-    lastName: 'rukundo',
+    lastName: 'safari',
     email: 'safari@gmail.com',
     password: 'safari1006',
   },
