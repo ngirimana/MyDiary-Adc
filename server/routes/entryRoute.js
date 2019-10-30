@@ -7,8 +7,8 @@ const router = express.Router();
 
 
 router.post('/entries', verifyAuth, entryValidation, EntryController.createEntry);
-router.patch('/entries/:entryId', verifyAuth, entryValidation, EntryController.modifyEntry);
+router.patch('/entries/:entrySlug', verifyAuth, entryValidation, EntryController.modifyEntry);
 router.get('/entries', verifyAuth, EntryController.getAllentries);
-router.get('/entries/:entryId', verifyAuth, EntryController.getSpecificEntry);
-router.delete('/entries/:entryId', verifyAuth, EntryController.deleteEntry);
+router.get('/entries/:entrySlug', verifyAuth, EntryController.getSpecificEntry);
+router.delete('/entries/:entrySlug', verifyAuth, EntryController.deleteEntry);
 export default router;

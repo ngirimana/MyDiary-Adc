@@ -47,16 +47,16 @@ The project is composed of two different sections:
 
 ###### For Application Programming Interface(API)
 
-| HTTP Method | Endpoint                 | Description                                     |
-| :---------- | :----------------------- | :---------------------------------------------- |
-| GET         | /                        | Default route                                   |
-| POST        | /api/v1/auth/signup      | User can create an account                      |
-| POST        | /api/v1/auth/signin      | User can sign in                                |
-| POST        | /api/v1/entries          | User can add an entry in diary                  |
-| PATCH       | /api/v1//entries/entryId | user can modify entry in diary                  |
-| GET         | /api/v1/entries          | User can get all entries in his/her diary       |
-| GET         | /api//v1/entries/entryId | User can get specific entry in his/her diary    |
-| DELETE      | /api//v1/entries/entryId | User can delete specific entry in his/her diary |
+| HTTP Method | Endpoint                   | Description                                     |
+| :---------- | :------------------------- | :---------------------------------------------- |
+| GET         | /                          | Default route                                   |
+| POST        | /api/v1/auth/signup        | User can create an account                      |
+| POST        | /api/v1/auth/signin        | User can sign in                                |
+| POST        | /api/v1/entries            | User can add an entry in diary                  |
+| PATCH       | /api/v1//entries/entrySlug | user can modify entry in diary                  |
+| GET         | /api/v1/entries            | User can get all entries in his/her diary       |
+| GET         | /api//v1/entries/entrySlug | User can get specific entry in his/her diary    |
+| DELETE      | /api//v1/entries/entrySlug | User can delete specific entry in his/her diary |
 
 ### Installation
 

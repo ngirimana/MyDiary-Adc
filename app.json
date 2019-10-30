@@ -3,7 +3,7 @@
   "info": {
     "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
     "version": "1.0",
-    "title": "mydiary-adc",
+    "title": "Mydiary-adc",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
       "email": "chadrackngirimana@gmail.com"
@@ -126,7 +126,7 @@
       }
     },
 
-    "/entries/{entryId}": {
+    "/entries/{entrySlug}": {
       "patch": {
         "tags": ["Create entry"],
         "summary": "User can add entry to his or her diary",
@@ -143,11 +143,10 @@
             "description": "The value of user token"
           },
           {
-            "name": "entryId",
+            "name": "entrySlug",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "in": "body",
@@ -219,7 +218,7 @@
         }
       }
     },
-    "/entries/{entryId}  ": {
+    "/entries/{entrySlug}  ": {
       "get": {
         "tags": ["View specific entry"],
         "summary": "Return specific entry in diary",
@@ -233,11 +232,10 @@
             "description": "The value of user token"
           },
           {
-            "name": "entryId",
+            "name": "entrySlug",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "responses": {
@@ -250,9 +248,6 @@
           "404": {
             "description": "An entry with given Id was found"
           },
-          "400": {
-            "description": "An entryId is not number"
-          },
           "401": {
             "description": "The User associated with this token doesn't exist."
           },
@@ -262,7 +257,7 @@
         }
       }
     },
-    "/entries/{entryId} ": {
+    "/entries/{entrySlug} ": {
       "delete": {
         "tags": ["Delete specific entry"],
         "summary": "Return deleted entry in diary",
@@ -276,11 +271,10 @@
             "description": "The value of user token"
           },
           {
-            "name": "entryId",
+            "name": "entrySlug",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "responses": {
@@ -292,9 +286,6 @@
           },
           "404": {
             "description": "An entry with given Id was found"
-          },
-          "400": {
-            "description": "An entryId is not number"
           },
           "401": {
             "description": "The User associated with this token doesn't exist."
