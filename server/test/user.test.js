@@ -18,7 +18,7 @@ describe('0. Welcome', () => {
       expect(res.status).to.equal(200);
       expect(res.body.message).to.equal('Welcome To My Diary');
     } catch (err) {
-      throw err;
+      (() => { throw err; }).should.throw();
     }
   });
 });
@@ -34,7 +34,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"firstName" is not allowed to be empty');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 
@@ -49,7 +49,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"lastName" is not allowed to be empty');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return password is required if it is empty', async () => {
@@ -63,7 +63,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"password" is not allowed to be empty');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return signup successful', async () => {
@@ -82,7 +82,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.body.data.userdata.lastName).to.equal('schadrack');
       expect(res.body.data.userdata.email).to.equal('chadrack@gmail.com');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return signup successful', async () => {
@@ -114,7 +114,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.statusCode).to.equal(409);
       expect(res.body.error).to.equal('chadrack@gmail.com is already taken');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "password" length must be at least 8 characters long', async () => {
@@ -127,7 +127,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.status).to.equal(400);
       expect(res.body.error).to.equal('"password" length must be at least 8 characters long');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "first_name" is required if data are not complete', async () => {
@@ -140,7 +140,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.status).to.equal(400);
       expect(res.body.error).to.equal('"firstName" is required');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return invalid email', async () => {
@@ -153,7 +153,7 @@ describe('1 . POST signup,api/v1/auth/signup', () => {
       expect(res.status).to.equal(400);
       expect(res.body.error).to.equal('"email" must be a valid email');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
@@ -174,7 +174,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body.data.userdata.lastName).to.equal('schadrack');
       expect(res.body.data.userdata.email).to.equal('chadrack@gmail.com');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return Incorrect email or password', async () => {
@@ -188,7 +188,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body.status).to.equal(401);
       expect(res.body.error).to.equal('Incorrect email or password');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "email "is required when request is not complete', async () => {
@@ -202,7 +202,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"email" is required');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "password"is required', async () => {
@@ -216,7 +216,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"password" is required');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return email must be valid', async () => {
@@ -229,7 +229,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"email" must be a valid email');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });

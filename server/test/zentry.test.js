@@ -36,7 +36,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"title" is required');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "title" is not allowed to be empty', async () => {
@@ -51,7 +51,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"title" is not allowed to be empty');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "description" is not allowed to be empty', async () => {
@@ -66,7 +66,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"description" is not allowed to be empty');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return "title" must be a string', async () => {
@@ -81,7 +81,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"title" must be a string');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return You haven\'t provide your token', async () => {
@@ -96,7 +96,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('You haven\'t provide your token');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return You are not authorized to perform this action', async () => {
@@ -111,7 +111,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(401);
       expect(res.body.error).to.equal('You are not authorized to perform this action');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return jwt malformed', async () => {
@@ -126,7 +126,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('jwt malformed');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return Your entries  are not found!', async () => {
@@ -140,7 +140,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.status).to.equal(404);
       expect(res.body.error).to.equal('Your entries  are not found!');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return entry successfully created', async () => {
@@ -163,7 +163,7 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
       expect(res.body.data.description).to.equal('hfhsf hsdbhahda dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data).to.have.property('updatedOn');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
@@ -180,7 +180,7 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.status).to.equal(404);
       expect(res.body.error).to.equal('An entry with Id "10" does not exist');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return this entry does not belongs to you ', async () => {
@@ -195,7 +195,7 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.status).to.equal(403);
       expect(res.body).to.have.property('error');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return entry successfully edited', async () => {
@@ -210,7 +210,7 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.status).to.equal(200);
       expect(res.body.message).to.equal('entry successfully edited');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
@@ -232,7 +232,7 @@ describe(' 5. GET entries ,/api/v1/entries', () => {
       expect(res.body.data[0].description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data[0]).to.have.property('updatedOn');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
@@ -248,7 +248,7 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
       expect(res.status).to.equal(404);
       expect(res.body.status).to.equal(404);
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 
@@ -262,8 +262,7 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
       expect(res.status).to.equal(403);
       expect(res.body.status).to.equal(403);
     } catch (error) {
-      throw error;
-    }
+      (() => { throw error; }).should.throw();    }
   });
   it('should return Your Entry was found ', async () => {
     try {
@@ -282,7 +281,7 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data).to.have.property('updatedOn');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
@@ -298,7 +297,7 @@ describe('7 . DELETE entries ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.status).to.equal(404);
       expect(res.body.error).to.equal('This entry is not avaialable');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 
@@ -333,7 +332,7 @@ describe('7 . DELETE entries ,/api/v1/entries/:entrySlug', () => {
       expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data).to.have.property('updatedOn');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
 });
