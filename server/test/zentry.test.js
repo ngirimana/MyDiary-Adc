@@ -168,17 +168,31 @@ describe(' 3. POST entries ,/api/v1/entries', () => {
   });
 });
 describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
+  it('should return entry should should be alphanumeric ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v1/entries/10')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      // expect(res.body.error).to.equal('Entry slug should be a alphnumeric ');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
   it('should return id is not found ', async () => {
     try {
       const res = await chai.request(app)
-        .patch('/api/v1/entries/10')
+        .patch('/api/v1/entries/10bb')
         .set('x-auth-token', token)
         .set('Accept', 'application/json')
         .send(entries[5]);
       expect(res.body).to.be.an('object');
       expect(res.status).to.equal(404);
       expect(res.body.status).to.equal(404);
-      expect(res.body.error).to.equal('An entry with Id "10" does not exist');
+      expect(res.body.error).to.equal('An entry with Id "10bb" does not exist');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
@@ -190,6 +204,7 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
         .set('x-auth-token', notYoursToken)
         .set('Accept', 'application/json')
         .send(entries[5]);
+      console.log(typeof (slug));
       expect(res.body).to.be.an('object');
       expect(res.status).to.equal(403);
       expect(res.body.status).to.equal(403);
@@ -238,15 +253,31 @@ describe(' 5. GET entries ,/api/v1/entries', () => {
 });
 
 describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
-  it('should return entry is not found ', async () => {
+  it('should return entry should should be alphanumeric ', async () => {
     try {
       const res = await chai.request(app)
         .get('/api/v1/entries/10')
         .set('x-auth-token', token)
         .set('Accept', 'application/json');
       expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('Entry slug should be a alphnumeric ');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+
+  it('should return entry is not found ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v1/entries/10bbb')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
       expect(res.status).to.equal(404);
       expect(res.body.status).to.equal(404);
+      expect(res.body.error).to.equal('This entry is not fouund');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
@@ -262,7 +293,8 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
       expect(res.status).to.equal(403);
       expect(res.body.status).to.equal(403);
     } catch (error) {
-      (() => { throw error; }).should.throw();    }
+      (() => { throw error; }).should.throw();
+    }
   });
   it('should return Your Entry was found ', async () => {
     try {
@@ -286,10 +318,24 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
   });
 });
 describe('7 . DELETE entries ,/api/v1/entries/:entrySlug', () => {
+  it('should return entry should should be alphanumeric ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v1/entries/10')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('Entry slug should be a alphnumeric ');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
   it('should return id is not found ', async () => {
     try {
       const res = await chai.request(app)
-        .delete('/api/v1/entries/10')
+        .delete('/api/v1/entries/10bb')
         .set('x-auth-token', token)
         .set('Accept', 'application/json');
       expect(res.body).to.be.an('object');

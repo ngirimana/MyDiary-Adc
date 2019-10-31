@@ -1,5 +1,5 @@
 class responses {
-  static errorResponse = (req, res, status, resError) => {
+  static errorResponse = (res, status, resError) => {
     res.status(status).json({
       status,
       error: resError,
@@ -7,7 +7,7 @@ class responses {
     });
   };
 
-  static successResponse = (req, res, status, resMessage, data) => {
+  static successResponse = (res, status, resMessage, data) => {
     res.status(status).json({
       status,
       message: resMessage,
