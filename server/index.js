@@ -16,9 +16,9 @@ app.use('/api/v1', entryRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/', (req, res) => {
-  res.status(400).send({
-    status: 400,
-    error: 'Incorrect route',
+  res.status(200).send({
+    status: 200,
+    message: 'Welcome To My Diary',
   });
 });
 
