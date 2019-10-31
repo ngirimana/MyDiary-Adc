@@ -11,7 +11,7 @@ export const signUpValidation = (req, res, next) => {
   };
   const result = Joi.validate(req.body, schema);
   if (result.error !== null) {
-    return response.errorResponse(req, res, 400, `${result.error.details[0].message}`);
+    return response.errorResponse(res, 400, `${result.error.details[0].message}`);
   }
   next();
 };
@@ -22,7 +22,7 @@ export const signInValidation = (req, res, next) => {
   };
   const result = Joi.validate(req.body, schema);
   if (result.error !== null) {
-    return response.errorResponse(req, res, 400, `${result.error.details[0].message}`);
+    return response.errorResponse(res, 400, `${result.error.details[0].message}`);
   }
   next();
 };

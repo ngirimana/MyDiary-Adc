@@ -8,13 +8,11 @@ import { encryptPassword, decryptPassword } from '../helpers/securedPassword';
 dotenv.config();
 export const users = [];
 class UserController {
-  static users = [];
-
   static signUp = (req, res) => {
     const id = users.length + 1;
     const takenEmail = users.find((user) => user.email === req.body.email);
     if (takenEmail) {
-      return response.errorResponse(req, res, 409, `${req.body.email} is already taken`);
+      return response.errorResponse(res, 409, `${req.body.email} is already taken`);
     }
     let {
       firstName, lastName, email, password,
@@ -27,7 +25,7 @@ class UserController {
       token,
       userdata: lodash.pick(user, ['id', 'firstName', 'lastName', 'email']),
     };
-    return response.successResponse(req, res, 201, 'User created successfully', data);
+    return response.successResponse(res, 201, 'User created successfully', data);
   }
 
   static signIn = (req, res) => {
@@ -36,14 +34,14 @@ class UserController {
       && (decryptPassword(password, userdata.password)));
 
     if (!user) {
-      return response.errorResponse(req, res, 401, 'Incorrect email or password');
+      return response.errorResponse(res, 401, 'Incorrect email or password');
     }
     const token = generateAuthToken(user.id, user.email);
     const data = {
       token,
       userdata: lodash.pick(user, ['id', 'firstName', 'lastName', 'email']),
     };
-    return response.successResponse(req, res, 200, 'User signed in successfully', data);
+    return response.successResponse(res, 200, 'User signed in successfully', data);
   }
 }
 
