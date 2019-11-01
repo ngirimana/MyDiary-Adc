@@ -310,7 +310,7 @@ input[type="submit"]:hover {
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
+  display: block;
   padding: 0px 0px;
   border-top: none;
 }
@@ -320,6 +320,9 @@ input[type="submit"]:hover {
   width: 100%;
   margin: 10px auto;
   padding: 10px;
+}
+#editor-btn {
+  background-color: white;
 }
 .btnn {
   text-transform: capitalize;
@@ -550,8 +553,8 @@ input[type="submit"]:hover {
 .notify {
   margin-bottom: 20px;
 }
-.fa-eye{
-   color: #93cb52;
+.fa-eye {
+  color: #93cb52;
 }
 footer {
   height: 70px;
