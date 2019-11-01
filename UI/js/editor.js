@@ -3,7 +3,6 @@ const openTab = (evt, tabName) => {
     const txt = document.querySelector('#entryContent');
 
     document.querySelector('#preview').innerHTML = txt.value;
-    document.querySelector('#editor-btn').style.background = '#ddd'
   }
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");

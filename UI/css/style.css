@@ -321,9 +321,7 @@ input[type="submit"]:hover {
   margin: 10px auto;
   padding: 10px;
 }
-#editor-btn {
-  background-color: white;
-}
+
 .btnn {
   text-transform: capitalize;
   cursor: pointer;
