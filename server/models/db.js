@@ -11,8 +11,6 @@ class Model {
     });
   }
 
-
-  // CRUD - READ Operation
   select = async (columns, clause, values) => {
     try {
       const query = `SELECT ${columns} FROM ${this.table} WHERE ${clause}`;
@@ -23,7 +21,6 @@ class Model {
     }
   }
 
-  // CRUD - CREATE Operation
   async insert(columns, selector, values) {
     const query = `INSERT INTO ${this.table} (${columns}) VALUES (${selector}) returning *`;
     try {
@@ -34,7 +31,6 @@ class Model {
     }
   }
 
-  // CRUD - UPDATE Operation
   async update(columns, clause, values) {
     const query = `UPDATE ${this.table} SET ${columns} WHERE ${clause} returning *`;
     try {
@@ -45,7 +41,6 @@ class Model {
     }
   }
 
-  // CRUD - DELETE Operation
   async delete(clause, values) {
     const query = `DELETE FROM ${this.table} WHERE ${clause} returning *`;
     try {

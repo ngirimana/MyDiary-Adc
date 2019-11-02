@@ -3,15 +3,13 @@ import bodyParse from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import config from './config/default';
 import userRoute from './routes/userRoute';
-import entryRoute from './routes/entryRoute';
 import swaggerDocument from '../app.json';
 
 const app = express();
 
 app.use(bodyParse.json());
 
-app.use('/api/v1/auth', userRoute);
-app.use('/api/v1', entryRoute);
+app.use('/api/v2/auth', userRoute);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
