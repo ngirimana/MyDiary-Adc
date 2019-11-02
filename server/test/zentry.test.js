@@ -282,20 +282,6 @@ describe(' 6. GET  specific entry ,/api/v1/entries/:entrySlug', () => {
       (() => { throw error; }).should.throw();
     }
   });
-
-  it('should return this entry does not belongs to you ', async () => {
-    try {
-      const res = await chai.request(app)
-        .get(route)
-        .set('x-auth-token', notYoursToken)
-        .set('Accept', 'application/json');
-      expect(res.body).to.be.an('object');
-      expect(res.status).to.equal(403);
-      expect(res.body.status).to.equal(403);
-    } catch (error) {
-      (() => { throw error; }).should.throw();
-    }
-  });
   it('should return Your Entry was found ', async () => {
     try {
       const res = await chai.request(app)
