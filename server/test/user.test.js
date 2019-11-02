@@ -157,3 +157,79 @@ describe('1 . POST signup,api/v2/auth/signup', () => {
     }
   });
 });
+describe('2 .POST signin  api/v2/auth/signin', () => {
+  it('should return User signed in successfully', async () => {
+    try {
+      const res = await chai.request(app)
+        .post('/api/v2/auth/signin')
+        .set('Accept', 'application/json')
+        .send(users[4]);
+      expect(res.body).to.be.an('object');
+      expect(res.body.status).to.equal(200);
+      expect(res.status).to.equal(200);
+      expect(res.body.message).to.equal('User signed in successfully');
+      expect(res.body.data).to.have.property('token');
+      expect(res.body.data.userData.id).to.equal(1);
+      expect(res.body.data.userData.firstname).to.equal('NGIRIMANA');
+      expect(res.body.data.userData.lastname).to.equal('schadrack');
+      expect(res.body.data.userData.email).to.equal('chadrack@gmail.com');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return Incorrect email or password', async () => {
+    try {
+      const res = await chai.request(app)
+        .post('/api/v2/auth/signin')
+        .set('Accept', 'application/json')
+        .send(users[5]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(401);
+      expect(res.body.status).to.equal(401);
+      expect(res.body.error).to.equal('Incorrect email or password');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return "email "is required when request is not complete', async () => {
+    try {
+      const res = await chai.request(app)
+        .post('/api/v2/auth/signin')
+        .set('Accept', 'application/json')
+        .send(users[6]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('"email" is required');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return "password"is required', async () => {
+    try {
+      const res = await chai.request(app)
+        .post('/api/v2/auth/signin')
+        .set('Accept', 'application/json')
+        .send(users[7]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('"password" is required');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return email must be valid', async () => {
+    try {
+      const res = await chai.request(app)
+        .post('/api/v2/auth/signin')
+        .set('Accept', 'application/json')
+        .send(users[8]);
+      expect(res.body).to.be.an('object');
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('"email" must be a valid email');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+});
