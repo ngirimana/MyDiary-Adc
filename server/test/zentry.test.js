@@ -204,7 +204,6 @@ describe(' 4. PATCH entries ,/api/v1/entries/:entrySlug', () => {
         .set('x-auth-token', notYoursToken)
         .set('Accept', 'application/json')
         .send(entries[5]);
-      console.log(typeof (slug));
       expect(res.body).to.be.an('object');
       expect(res.status).to.equal(403);
       expect(res.body.status).to.equal(403);
