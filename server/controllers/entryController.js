@@ -55,12 +55,10 @@ class EntryController {
     const { entrySlug } = req.params;
     const userInfos = verifyToken(req.header('x-auth-token'));
     if (!isNaN(entrySlug)) { return notAlphaNum(res); }
-    const uniqueEntry = entries.find((entry) => entry.slug === entrySlug);
+    const uniqueEntry = entries.find((entry) => (entry.slug === entrySlug)
+      && (entry.userid === userInfos));
     if (!uniqueEntry) {
       return response.errorResponse(res, 404, 'This entry is not fouund');
-    }
-    if (uniqueEntry.userid !== userInfos) {
-      return response.errorResponse(res, 403, 'This entry is not yours');
     }
     return response.successResponse(res, 200, 'Your Entry was found', uniqueEntry);
   }
