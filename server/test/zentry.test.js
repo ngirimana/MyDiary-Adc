@@ -21,7 +21,7 @@ let notYoursToken = jwt.sign({
   Id: 2,
   userEmail: 'safari@gmail.com',
 }, process.env.SECRETEKEY);
-
+let badroute = '/api/v2/entries/qwert345';
 const invalidToken = 'hsgbs shgbhsbd dhbfhsdbfbds fhsbhfbhsbfhbdsf sfdhsdbfdbshdbf';
 describe(' 3. POST entries ,/api/v2/entries', () => {
   it('should return "title" is required ', async () => {
@@ -147,6 +147,74 @@ describe(' 3. POST entries ,/api/v2/entries', () => {
       expect(res.body.data.user_id).to.equal(1);
       expect(res.body.data.title).to.equal('rhehthhrt ettherhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
       expect(res.body.data.description).to.equal('hfhsf hsdbhahda dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
+      expect(res.body.data).to.have.property('updated_on');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+});
+describe(' 4. PATCH entries ,/api/v2/entries/:entrySlug', () => {
+  it('should return entry should should be alphanumeric ', async () => {
+    try {
+      const res = await chai.request(app)
+        .patch('/api/v2/entries/10')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json')
+        .send(entries[5]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('Entry slug should be a alphnumeric ');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return id is not found ', async () => {
+    try {
+      const res = await chai.request(app)
+        .patch(badroute)
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json')
+        .send(entries[5]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(404);
+      expect(res.body.status).to.equal(404);
+      expect(res.body.error).to.equal('An entry with Id qwert345 does not exist');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return this entry does not belongs to you ', async () => {
+    try {
+      const res = await chai.request(app)
+        .patch(route)
+        .set('x-auth-token', notYoursToken)
+        .set('Accept', 'application/json')
+        .send(entries[5]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(403);
+      expect(res.body.status).to.equal(403);
+      expect(res.body).to.have.property('error');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return entry successfully edited', async () => {
+    try {
+      const res = await chai.request(app)
+        .patch(route)
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json')
+        .send(entries[5]);
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(200);
+      expect(res.body.status).to.equal(200);
+      expect(res.body.message).to.equal('Entry successfully edited');
+      expect(res.body.data).to.have.property('slug');
+      expect(res.body.data).to.have.property('created_on');
+      expect(res.body.data.user_id).to.equal(1);
+      expect(res.body.data.title).to.equal('rhehthhrt etthfhddb erhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
+      expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data).to.have.property('updated_on');
     } catch (error) {
       (() => { throw error; }).should.throw();
