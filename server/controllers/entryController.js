@@ -47,5 +47,15 @@ class EntryController {
     const data = updatedEntry;
     return responses.successResponse(res, 200, 'Entry successfully edited', data);
   }
+
+  static getAllEntries = async (req, res) => {
+    const userId = userIdFromToken(req.header('x-auth-token'));
+    const userEntries = await this.entryModel().select('*', 'user_id=$1', [userId]);
+    if (!userEntries.length) {
+      return responses.errorResponse(res, 404, 'Your entries  are not found!');
+    }
+    const data = userEntries;
+    return responses.successResponse(res, 200, 'Your available entries are: ', data);
+  };
 }
 export default EntryController;
