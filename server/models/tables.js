@@ -20,11 +20,11 @@ CREATE TABLE users(
 DROP TABLE IF EXISTS entries CASCADE;
 CREATE TABLE entries(
   slug VARCHAR PRIMARY KEY NOT NULL,
-  created_on DATE NOT NULL,
-  userId INTEGER NOT NULL,
+  created_on VARCHAR NOT NULL,
+  user_id INTEGER NOT NULL,
   title VARCHAR NOT NULL,
   description VARCHAR NOT NULL,
-  updated_on  DATE NOT NULL
+  updated_on  VARCHAR NOT NULL
 )
 `);
 export default createTables;
