@@ -4,6 +4,7 @@ import responses from '../helpers/responses';
 import { userIdFromToken } from '../helpers/token';
 import { slugginingTitle } from '../helpers/makeSlug';
 import { currentDate } from '../helpers/date';
+import { notAlphaNum } from '../helpers/notAlphaNum';
 
 class EntryController {
   static entryModel() {
@@ -24,6 +25,27 @@ class EntryController {
     } catch (er) {
       return responses.errorResponse(res, 500, er);
     }
+  }
+
+  static modifyEntry = async (req, res) => {
+    let { title, description } = req.body;
+    const { entrySlug } = req.params;
+    const entryUpdateDate = currentDate();
+    const userInfosId = userIdFromToken(req.header('x-auth-token'));
+    if (!isNaN(entrySlug)) { return notAlphaNum(res); }
+    const entry = await this.entryModel().select('*', 'slug=$1', [entrySlug]);
+    if (!entry.length) {
+      return responses.errorResponse(res, 404, `An entry with Id ${entrySlug} does not exist`);
+    }
+    if (userInfosId !== entry[0].user_id) {
+      return responses.errorResponse(res, 403, `An entry with Id ${entrySlug} does not belongs to you`);
+    }
+    const cols = 'title=$1, description=$2, updated_on=$3';
+    const clause = 'slug=$4';
+    const values = [title, description, entryUpdateDate, entrySlug];
+    const updatedEntry = await this.entryModel().update(cols, clause, values);
+    const data = updatedEntry;
+    return responses.successResponse(res, 200, 'Entry successfully edited', data);
   }
 }
 export default EntryController;

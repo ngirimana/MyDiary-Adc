@@ -11,7 +11,7 @@ class Model {
     });
   }
 
-  select = async (columns, clause, values) => {
+  async select(columns, clause, values) {
     try {
       const query = `SELECT ${columns} FROM ${this.table} WHERE ${clause}`;
       const { rows } = await this.pool.query(query, values);
