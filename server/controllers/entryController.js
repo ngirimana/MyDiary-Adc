@@ -57,5 +57,17 @@ class EntryController {
     const data = userEntries;
     return responses.successResponse(res, 200, 'Your available entries are: ', data);
   };
+
+  static getSpecificEntry = async (req, res) => {
+    const { entrySlug } = req.params;
+    const userInfos = userIdFromToken(req.header('x-auth-token'));
+    if (!isNaN(entrySlug)) { return notAlphaNum(res); }
+    const singleEntry = await this.entryModel().select('*', 'slug=$1', [entrySlug]);
+    if (!singleEntry.length && singleEntry.user_id !== userInfos) {
+      return responses.errorResponse(res, 404, 'This entry is not found');
+    }
+    const data = singleEntry[0];
+    return responses.successResponse(res, 200, 'Your Entry was found', data);
+  }
 }
 export default EntryController;

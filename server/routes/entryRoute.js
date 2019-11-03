@@ -7,4 +7,5 @@ const router = express.Router();
 router.post('/entries', Authentication.verifyAuth, entryValidation, EntryController.createEntry);
 router.patch('/entries/:entrySlug', Authentication.verifyAuth, entryValidation, EntryController.modifyEntry);
 router.get('/entries', Authentication.verifyAuth, EntryController.getAllEntries);
+router.get('/entries/:entrySlug', Authentication.verifyAuth, EntryController.getSpecificEntry);
 export default router;
