@@ -6,4 +6,5 @@ import Authentication from '../middlewares/verifyAuthentication';
 const router = express.Router();
 router.post('/entries', Authentication.verifyAuth, entryValidation, EntryController.createEntry);
 router.patch('/entries/:entrySlug', Authentication.verifyAuth, entryValidation, EntryController.modifyEntry);
+router.get('/entries', Authentication.verifyAuth, EntryController.getAllEntries);
 export default router;

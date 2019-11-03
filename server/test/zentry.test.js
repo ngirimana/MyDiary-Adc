@@ -129,6 +129,20 @@ describe(' 3. POST entries ,/api/v2/entries', () => {
       (() => { throw error; }).should.throw();
     }
   });
+  it('should return Your entries  are not found!', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v2/entries')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(404);
+      expect(res.body.status).to.equal(404);
+      expect(res.body.error).to.equal('Your entries  are not found!');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
   it('should return entry successfully created', async () => {
     try {
       const res = await chai.request(app)
@@ -216,6 +230,28 @@ describe(' 4. PATCH entries ,/api/v2/entries/:entrySlug', () => {
       expect(res.body.data.title).to.equal('rhehthhrt etthfhddb erhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
       expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
       expect(res.body.data).to.have.property('updated_on');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+});
+describe(' 5. GET entries ,/api/v2/entries', () => {
+  it('should return Your available entries are: ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v2/entries')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(200);
+      expect(res.body.status).to.equal(200);
+      expect(res.body.message).to.equal('Your available entries are: ');
+      expect(res.body.data[0]).to.have.property('slug');
+      expect(res.body.data[0]).to.have.property('created_on');
+      expect(res.body.data[0].user_id).to.equal(1);
+      expect(res.body.data[0].title).to.equal('rhehthhrt etthfhddb erhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
+      expect(res.body.data[0].description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
+      expect(res.body.data[0]).to.have.property('updated_on');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
