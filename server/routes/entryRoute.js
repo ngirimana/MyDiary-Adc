@@ -8,4 +8,5 @@ router.post('/entries', Authentication.verifyAuth, entryValidation, EntryControl
 router.patch('/entries/:entrySlug', Authentication.verifyAuth, entryValidation, EntryController.modifyEntry);
 router.get('/entries', Authentication.verifyAuth, EntryController.getAllEntries);
 router.get('/entries/:entrySlug', Authentication.verifyAuth, EntryController.getSpecificEntry);
+router.delete('/entries/:entrySlug', Authentication.verifyAuth, EntryController.deleteEntry);
 export default router;

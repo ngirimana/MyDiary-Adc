@@ -69,5 +69,20 @@ class EntryController {
     const data = singleEntry[0];
     return responses.successResponse(res, 200, 'Your Entry was found', data);
   }
+
+  static deleteEntry = async (req, res) => {
+    const { entrySlug } = req.params;
+    const userInfo = userIdFromToken(req.header('x-auth-token'));
+    if (!isNaN(entrySlug)) { return notAlphaNum(res); }
+    const uniqueEntry = await this.entryModel().select('*', 'slug=$1', [entrySlug]);
+    if (!uniqueEntry.length) {
+      return responses.errorResponse(res, 404, 'This entry is not avaialable');
+    }
+    if (uniqueEntry[0].user_id !== userInfo) {
+      return responses.errorResponse(res, 403, 'This entry doesn\'t belongs to you');
+    }
+    await this.entryModel().delete('slug=$1', [entrySlug]);
+    return responses.successResponse(res, 200, 'entry successfully deleted', uniqueEntry[0]);
+  }
 }
 export default EntryController;

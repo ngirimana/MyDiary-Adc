@@ -308,3 +308,68 @@ describe(' 6. GET  specific entry ,/api/v2/entries/:entrySlug', () => {
     }
   });
 });
+describe('7 . DELETE entries ,/api/v2/entries/:entrySlug', () => {
+  it('should return entry should should be alphanumeric ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v2/entries/10')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
+      expect(res.body.error).to.equal('Entry slug should be a alphnumeric ');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return id is not found ', async () => {
+    try {
+      const res = await chai.request(app)
+        .delete('/api/v2/entries/10bb')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(404);
+      expect(res.body.status).to.equal(404);
+      expect(res.body.error).to.equal('This entry is not avaialable');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+
+  it('should return this entry does not belongs to you ', async () => {
+    try {
+      const res = await chai.request(app)
+        .delete(route)
+        .set('x-auth-token', notYoursToken)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(403);
+      expect(res.body.status).to.equal(403);
+      expect(res.body.error).to.equal('This entry doesn\'t belongs to you');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+  it('should return entry successfully deleted', async () => {
+    try {
+      const res = await chai.request(app)
+        .delete(route)
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(200);
+      expect(res.body.status).to.equal(200);
+      expect(res.body.message).to.equal('entry successfully deleted');
+      expect(res.body.data).to.have.property('slug');
+      expect(res.body.data).to.have.property('created_on');
+      expect(res.body.data.user_id).to.equal(1);
+      expect(res.body.data.title).to.equal('rhehthhrt etthfhddb erhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
+      expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
+      expect(res.body.data).to.have.property('updated_on');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+});
