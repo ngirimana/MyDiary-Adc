@@ -28,7 +28,7 @@ class EntryController {
   }
 
   static modifyEntry = async (req, res) => {
-    let { title, description } = req.body;
+    const { title, description } = req.body;
     const { entrySlug } = req.params;
     const entryUpdateDate = currentDate();
     const userInfosId = userIdFromToken(req.header('x-auth-token'));

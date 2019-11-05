@@ -18,5 +18,5 @@ app.use('/', (req, res) => {
   });
 });
 const { port } = config;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => process.stdout.write(`Listening on port ${port}...`));
 export default app;

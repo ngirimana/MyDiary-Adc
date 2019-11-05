@@ -101,7 +101,7 @@ describe('1 . POST signup,api/v2/auth/signup', () => {
       expect(res.body.data.userData.lastname).to.equal('safari');
       expect(res.body.data.userData.email).to.equal('safari@gmail.com');
     } catch (error) {
-      throw error;
+      (() => { throw error; }).should.throw();
     }
   });
   it('should return {email} already exists', async () => {
@@ -111,7 +111,8 @@ describe('1 . POST signup,api/v2/auth/signup', () => {
         .set('Accept', 'application/json')
         .send(users[0]);
       expect(res.body).to.be.an('object');
-      expect(res.status).to.equal(409);
+      expect(res.status).to.equal(400);
+      expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('chadrack@gmail.com was already taken');
     } catch (error) {
       (() => { throw error; }).should.throw();

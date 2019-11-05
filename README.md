@@ -2,7 +2,7 @@
 
 MyDiary is an online journal where users can pen down their thoughts and feelings.
 
-[![Build Status](https://travis-ci.org/ngirimana/MyDiary-Adc.svg?branch=develop)](https://travis-ci.org/ngirimana/MyDiary-Adc) [![Coverage Status](https://coveralls.io/repos/github/ngirimana/MyDiary-Adc/badge.svg)](https://coveralls.io/github/ngirimana/MyDiary-Adc) [![Maintainability](https://api.codeclimate.com/v1/badges/83416e7d77df58e984de/maintainability)](https://codeclimate.com/github/ngirimana/MyDiary-Adc/maintainability)
+[![Build Status](https://travis-ci.org/ngirimana/MyDiary-Adc.svg?branch=develop)](https://travis-ci.org/ngirimana/MyDiary-Adc) [![Coverage Status](https://coveralls.io/repos/github/ngirimana/MyDiary-Adc/badge.svg)](https://coveralls.io/github/ngirimana/MyDiary-Adc) [![Maintainability](https://api.codeclimate.com/v2/badges/83416e7d77df58e984de/maintainability)](https://codeclimate.com/github/ngirimana/MyDiary-Adc/maintainability)
 
 ## Getting Started
 
@@ -22,8 +22,8 @@ The project is composed of two different sections:
 
 - Application Programming Interface(API)
 
-  - Node JS
-  - Postman
+  - [Node JS](https://nodejs.org/)
+  - [Postman](https://www.getpostman.com/downloads/)
 
 - For windows O.S user,we recommend to download and install [Git bash](https://git-scm.com/downloads) for easy interaction with github
 
@@ -50,40 +50,72 @@ The project is composed of two different sections:
 | HTTP Method | Endpoint                   | Description                                     |
 | :---------- | :------------------------- | :---------------------------------------------- |
 | GET         | /                          | Default route                                   |
-| POST        | /api/v1/auth/signup        | User can create an account                      |
-| POST        | /api/v1/auth/signin        | User can sign in                                |
-| POST        | /api/v1/entries            | User can add an entry in diary                  |
-| PATCH       | /api/v1//entries/entrySlug | user can modify entry in diary                  |
-| GET         | /api/v1/entries            | User can get all entries in his/her diary       |
-| GET         | /api//v1/entries/entrySlug | User can get specific entry in his/her diary    |
-| DELETE      | /api//v1/entries/entrySlug | User can delete specific entry in his/her diary |
+| POST        | /api/v2/auth/signup        | User can create an account                      |
+| POST        | /api/v2/auth/signin        | User can sign in                                |
+| POST        | /api/v2/entries            | User can add an entry in diary                  |
+| PATCH       | /api/v2//entries/entrySlug | user can modify entry in diary                  |
+| GET         | /api/v2/entries            | User can get all entries in his/her diary       |
+| GET         | /api//v2/entries/entrySlug | User can get specific entry in his/her diary    |
+| DELETE      | /api//v2/entries/entrySlug | User can delete specific entry in his/her diary |
 
 ### Installation
 
 1.  First download and install [Node JS](https://nodejs.org/en/download/)
 2.  Download and install [Postman](https://www.getpostman.com/downloads/)
-3.  Clone repository [MyDiary](https://github.com/ngirimana/MyDiary-Adc/tree/develop)
-4.  Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
+3.  Download and install [postgresql](https://www.postgresql.org/)
+
+4.  Clone repository [MyDiary](https://github.com/ngirimana/MyDiary-Adc/tree/develop) by running
+    `git clone https://github.com/ngirimana/MyDiary-Adc.git`
+5.  Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
+
+### Set up environment variable
+
+- PASSWORD_SALT : for password hashing round salt
+- SECRETEKEY: secrete word use when system is generating token
+- DATABASE_URL: database connection string. example: postgresql://postgres:12345@localhost/mydiary
 
 ### Running
 
 - Running server on local development
 
-  - Run `npm run dev-start` in terminal
+  - Run `npm run dev-start` in terminal and test using postman.For example on create account api
+    you can send post request on localhost:4000/api/v2/auth/signup
+    this is requst body
+    ```{
+    "firstName":"Ngirimana",
+    "lastName":"schasdrack",
+    "email":"safarddsshggsishghytySndd12@gmail.com",
+    "password":"ffefefe"
+    }
+    response will be:
+    {
+    "status": 201,
+    "message": "User created successfully",
+    "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6OCwidXNlckVtYWlsIjoic2FmYXJkZHNzaGdnc2lzaGdoeXR5U25kZDEyQGdtYWlsLmNvbSIsImlhdCI6MTU3Mjk0ODY5NiwiZXhwIjoxNTczMDM1MDk2fQ.t0Q4KYr_YmwmI6Skmk9nLoBgLJcgX1O1iyWJVMck0NU",
+    "userData": {
+    "id": 8,
+    "firstname": "Ngirimana",
+    "lastname": "schasdrack",
+    "email": "safarddsshggsishghytySndd12@gmail.com"
+    }
+    }
+    }
+    ```
 
-- Running API test in local test environment
+* Running API test in local test environment
 
   - Run `npm test` in terminal
 
-  - Running hosted project
+### Deployment
 
-  - User interface
+- User interface on gh-pages
 
-    1. [MyDiary](https://mydiary-web.herokuapp.com/api-docs/)
+  1. [MyDiary](https://ngirimana.github.io/MyDiary-Adc/UI/)
 
-  - For running the API
-    1. [Heroku link](https://mydiary-web.herokuapp.com/)
-    2. [API documentation](https://mydiary-web.herokuapp.com/api-docs/)
+- For running the API
+  1. [Heroku link](https://mydiary-web.herokuapp.com/)
+  2. [API documentation](https://mydiary-web.herokuapp.com/api-docs/) using swagger
 
 ### Tools
 
@@ -95,6 +127,7 @@ The project is composed of two different sections:
   - Testing Framework: [Mocha](https://mochajs.org/)
   - TDD assertion library: [Chai](https://www.chaijs.com)
   - Documentation Tools: [Swagger](https://swagger.io/tools/swagger-ui/)
+  - Database : [postgresql](https://www.postgresql.org/)
 
 - User interface
 
