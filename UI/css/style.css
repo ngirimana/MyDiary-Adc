@@ -129,11 +129,10 @@ a {
     display: none;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1700px) {
   body {
     width: 80%;
     margin: 0% auto;
-    /* box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76); */
   }
 }
 
