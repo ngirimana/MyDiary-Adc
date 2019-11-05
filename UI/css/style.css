@@ -129,14 +129,7 @@ a {
     display: none;
   }
 }
-@media screen and (min-width: 1700px) {
-  body {
-    width: 80%;
-    margin: 0% auto;
-  }
-}
 
-/*showcase8*/
 #showcase {
   background: url(../img/diary1.jpg) no-repeat center center/cover;
   color: #fff;
@@ -184,7 +177,6 @@ a {
 .items .item h3 {
   text-align: center;
 }
-/* from */
 #user-auth {
   padding-bottom: 70px;
   background: url(../img/diary1.jpg) no-repeat center center/cover;
@@ -263,7 +255,6 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-/* add entry*/
 #entry-form {
   padding-bottom: 70px;
   height: 100%;
@@ -281,15 +272,12 @@ input[type="submit"]:hover {
   margin: 10px 15%;
   padding: 5px;
 }
-/* Style the tab */
 .tab {
   width: 100%;
   margin: 0px auto;
   overflow: hidden;
   background-color: #f1f1f1;
 }
-
-/* Style the buttons inside the tab */
 
 .tab button {
   background-color: inherit;
@@ -302,17 +290,14 @@ input[type="submit"]:hover {
   font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: white;
 }
 
-/* Style the tab content */
 .tabcontent {
   display: block;
   padding: 0px 0px;
@@ -342,7 +327,6 @@ input[type="submit"]:hover {
 .btnn:hover {
   background-color: #74b436;
 }
-/* all entries */
 #all-entries {
   padding-bottom: 70px;
   height: 100%;
