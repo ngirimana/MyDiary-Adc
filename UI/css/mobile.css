@@ -26,7 +26,7 @@
   }
   #showcase {
     margin-top: 0px;
-    height: 50vh;
+    height: 55vh;
     padding-top: 70px;
   }
   #showcase .showcase-content {
@@ -122,7 +122,7 @@
   .user-profile {
     display: grid;
     grid-template-columns: 1fr;
-    justify-content: center;
+    grid-gap: 1rem;
   }
   .user-profile .user-image,
   .user-info {
@@ -138,6 +138,14 @@
     font-size: 1.2rem;
     margin-left: 70px;
   }
+
+  .user-settings {
+    padding-top: 20px;
+    margin-left: 70px;
+  }
+  #setting input[type="checkbox"] {
+    margin-bottom: 1rem;
+  }
   #search-container {
     width: 100%;
     margin: 10px;
@@ -151,6 +159,36 @@
     font-size: 1rem;
     margin-top: 5px;
     padding: 10px;
+  }
+  #entryContent,
+  #preview {
+    font-size: 1rem;
+    width: 70%;
+  }
+  .tab {
+    width: 70%;
+    margin: 10px auto;
+  }
+  .entries {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .entry-content {
+    width: 90%;
+    margin: 10px auto;
+  }
+  .entry-item .title {
+    font-size: 0.8rem;
+  }
+  #entry-content-tile {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .btnn {
+    margin-left: 13%;
+  }
+  #entry-content-tile input {
+    width: 65%;
   }
 }
 @media screen and (min-width: 501px) and (max-width: 768px) {
@@ -167,11 +205,5 @@
   #signup-form input[type="submit"] {
     width: 30%;
     margin-left: 15%;
-  }
-  .entries {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-content: space-evenly;
   }
 }
