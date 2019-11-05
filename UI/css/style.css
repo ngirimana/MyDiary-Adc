@@ -383,12 +383,11 @@ input[type="submit"]:hover {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2rem;
   margin: 1rem auto;
+  justify-items: start;
 }
 .entry-item {
   padding: 10px;
   font-size: 1rem;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
   border-radius: 5px;
   box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76);
 }
