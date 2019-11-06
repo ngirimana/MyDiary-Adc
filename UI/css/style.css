@@ -20,7 +20,7 @@ a {
   display: inline-block;
   color: #fff;
   background: #93cb52;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border: none;
   font-size: 1.5rem;
   border-radius: 5px;
@@ -129,14 +129,7 @@ a {
     display: none;
   }
 }
-@media screen and (min-width: 1440px) {
-  body {
-    width: 80%;
-    margin: 0% 10%;
-  }
-}
 
-/*showcase8*/
 #showcase {
   background: url(../img/diary1.jpg) no-repeat center center/cover;
   color: #fff;
@@ -149,7 +142,7 @@ a {
   text-align: center;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   padding: 0 2rem;
 }
 #how-it-works {
@@ -161,10 +154,13 @@ a {
 .items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-evenly;
+  grid-gap: 1rem;
+  margin: 1rem;
 }
 .items .item {
+  border-radius: 5px;
   padding: 20px;
+  box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76);
 }
 .items .item h2 i.fas {
   font-size: 50px;
@@ -181,7 +177,6 @@ a {
 .items .item h3 {
   text-align: center;
 }
-/* from */
 #user-auth {
   padding-bottom: 70px;
   background: url(../img/diary1.jpg) no-repeat center center/cover;
@@ -214,11 +209,12 @@ textarea {
   margin: 0px auto;
   display: block;
   margin-bottom: 10px;
+  margin-top: 10px;
   font-size: 1.2em;
   border-radius: 5px;
   outline: none;
   border: none;
-  border: 2px solid;
+  box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76);
   background: #fff;
 }
 label {
@@ -259,7 +255,6 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-/* add entry*/
 #entry-form {
   padding-bottom: 70px;
   height: 100%;
@@ -277,15 +272,12 @@ input[type="submit"]:hover {
   margin: 10px 15%;
   padding: 5px;
 }
-/* Style the tab */
 .tab {
   width: 100%;
   margin: 0px auto;
   overflow: hidden;
   background-color: #f1f1f1;
 }
-
-/* Style the buttons inside the tab */
 
 .tab button {
   background-color: inherit;
@@ -298,17 +290,14 @@ input[type="submit"]:hover {
   font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: white;
 }
 
-/* Style the tab content */
 .tabcontent {
   display: block;
   padding: 0px 0px;
@@ -329,16 +318,15 @@ input[type="submit"]:hover {
   display: inline-block;
   color: #fff;
   background: #93cb52;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border: none;
+  margin-top: 0;
   font-size: 1.5rem;
   border-radius: 5px;
-  margin-top: 10px;
 }
 .btnn:hover {
   background-color: #74b436;
 }
-/* all entries */
 #all-entries {
   padding-bottom: 70px;
   height: 100%;
@@ -373,22 +361,18 @@ input[type="submit"]:hover {
   border: none;
 }
 .entries {
+  width: 90%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-gap: 10px;
-  justify-content: space-evenly;
-  margin: 5px auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 1rem auto;
+  justify-items: start;
 }
 .entry-item {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
   padding: 10px;
   font-size: 1rem;
-  border-bottom: #444 solid 1px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76);
 }
 .entry-item .title {
   font-size: 1rem;
@@ -420,6 +404,7 @@ input[type="submit"]:hover {
 .entry-content {
   width: 80%;
   height: 100%;
+  padding: 1rem;
   padding-bottom: 70px;
   margin: 10px auto;
   margin-bottom: 0;
@@ -428,9 +413,14 @@ input[type="submit"]:hover {
 .entry-content .entry-title {
   margin-bottom: 20px;
 }
+.unique-entry {
+  box-shadow: 2px 2px 8px 1px rgba(148, 143, 148, 0.76);
+  margin: 1rem;
+  padding: 1rem;
+}
 .entry-content p,
 .entry-content .entry-title {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .entry-content p {
@@ -444,6 +434,14 @@ input[type="submit"]:hover {
 /* modal */
 .btn-delete {
   background: red;
+  margin: 1rem;
+}
+.btn-delete:hover {
+  background: red;
+}
+.small-btn {
+  font-size: 1.5rem;
+  padding: 0.2rem 0.5rem;
 }
 .modal-content {
   position: relative;
@@ -508,18 +506,15 @@ input[type="submit"]:hover {
   padding-bottom: 70px;
   height: 100%;
 }
-.user h2 {
-  text-align: center;
-  text-decoration: underline;
-}
 .user-profile {
   display: grid;
-  grid-template-columns: 0.7fr 1fr;
-  justify-content: center;
+  grid-template-columns: 0.7fr 1fr 0.7fr;
+  grid-gap: 1rem;
 }
 .user-profile .user-image,
-.user-info {
-  padding-top: 100px;
+.user-info,
+.user-settings {
+  padding-top: 30px;
 }
 .user-profile .user-image img {
   width: 50%;
@@ -529,21 +524,17 @@ input[type="submit"]:hover {
 }
 .user-profile .user-data {
   display: grid;
-  grid-template-columns: 0.3fr 1fr;
+  grid-template-columns: 0.7fr 1fr;
   padding: 1rem;
   font-size: 1.5rem;
 }
 .user-settings {
-  width: 50%;
-  margin: 10px auto;
-  text-align: center;
+  margin-top: 0;
 }
 .user-settings h2 {
   text-decoration: underline;
 }
-#setting {
-  font-size: 1.5rem;
-}
+
 #setting input[type="checkbox"] {
   width: 20px;
   height: 20px;
