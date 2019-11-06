@@ -22,7 +22,7 @@ class UserController {
       } = req.body;
       const user = await this.model().select('*', 'email=$1', [email]);
       if (user[0]) {
-        return response.errorResponse(res, 409, `${email} was already taken`);
+        return response.errorResponse(res, 400, `${email} was already taken`);
       }
       password = encryptPassword(password);
       const cols = 'firstName, lastName,email,password';

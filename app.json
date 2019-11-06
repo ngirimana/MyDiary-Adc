@@ -13,7 +13,7 @@
       "url": "https://github.com/ngirimana/MyDiary-Adc/blob/develop/README.md"
     }
   },
-  "basePath": "/api/v1",
+  "basePath": "/api/v2",
   "schemes": ["http", "https"],
   "paths": {
     "/auth/signup": {
