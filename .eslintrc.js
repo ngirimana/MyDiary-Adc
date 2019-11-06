@@ -10,7 +10,7 @@ module.exports = {
     "mocha": true
   },
   "rules": {
-    "prefer-const": "off",
     "no-restricted-globals": "off",
+    "consistent-return": "off"
   }
 }
