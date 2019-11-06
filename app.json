@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
-    "version": "1.0",
+    "version": "2.0",
     "title": "Mydiary-adc",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
@@ -20,7 +20,7 @@
       "post": {
         "tags": ["Signup"],
         "summary": "User signup API",
-        "description": "",
+        "description": "create account ",
         "operationId": "signup",
         "consumes": ["application/json", "application/xml"],
         "produces": ["application/xml", "application/json"],
@@ -52,7 +52,7 @@
       "post": {
         "tags": ["Signin"],
         "summary": "User signin API",
-        "description": "",
+        "description": "Login into account",
         "operationId": "signin",
         "consumes": ["application/json", "application/xml"],
         "produces": ["application/xml", "application/json"],
@@ -87,7 +87,7 @@
       "post": {
         "tags": ["Create entry"],
         "summary": "User can add entry to his or her diary",
-        "description": "",
+        "description": "add entry into your diary",
         "operationId": "add entry",
         "consumes": ["application/json", "application/xml"],
         "produces": ["application/xml", "application/json"],
@@ -130,7 +130,7 @@
       "patch": {
         "tags": ["Create entry"],
         "summary": "User can add entry to his or her diary",
-        "description": "",
+        "description": " modify content of your diary",
         "operationId": "add entry",
         "consumes": ["application/json", "application/xml"],
         "produces": ["application/xml", "application/json"],
@@ -181,7 +181,7 @@
       "get": {
         "tags": ["View all entries"],
         "summary": "Return all entries in diary",
-        "description": "",
+        "description": "Display all entries in your diary",
         "produces": ["application/json"],
         "parameters": [
           {
@@ -222,7 +222,7 @@
       "get": {
         "tags": ["View specific entry"],
         "summary": "Return specific entry in diary",
-        "description": "",
+        "description": "Get specific entry in your diary",
         "produces": ["application/json"],
         "parameters": [
           {
@@ -261,7 +261,7 @@
       "delete": {
         "tags": ["Delete specific entry"],
         "summary": "Return deleted entry in diary",
-        "description": "",
+        "description": "Delete specific entry from you diary",
         "produces": ["application/json"],
         "parameters": [
           {
