@@ -12,43 +12,27 @@ class Model {
   }
 
   async select(columns, clause, values) {
-    try {
-      const query = `SELECT ${columns} FROM ${this.table} WHERE ${clause}`;
-      const { rows } = await this.pool.query(query, values);
-      return rows;
-    } catch (err) {
-      throw err;
-    }
+    const query = `SELECT ${columns} FROM ${this.table} WHERE ${clause}`;
+    const { rows } = await this.pool.query(query, values);
+    return rows;
   }
 
   async insert(columns, selector, values) {
     const query = `INSERT INTO ${this.table} (${columns}) VALUES (${selector}) returning *`;
-    try {
-      const { rows } = await this.pool.query(query, values);
-      return rows;
-    } catch (err) {
-      throw err;
-    }
+    const { rows } = await this.pool.query(query, values);
+    return rows;
   }
 
   async update(columns, clause, values) {
     const query = `UPDATE ${this.table} SET ${columns} WHERE ${clause} returning *`;
-    try {
-      const { rows } = await this.pool.query(query, values);
-      return rows[0];
-    } catch (err) {
-      throw err;
-    }
+    const { rows } = await this.pool.query(query, values);
+    return rows[0];
   }
 
   async delete(clause, values) {
     const query = `DELETE FROM ${this.table} WHERE ${clause} returning *`;
-    try {
-      const { rows } = await this.pool.query(query, values);
-      return rows[0];
-    } catch (err) {
-      throw err;
-    }
+    const { rows } = await this.pool.query(query, values);
+    return rows[0];
   }
 }
 

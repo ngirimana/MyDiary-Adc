@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import responses from '../helpers/responses';
 
-export const entryValidation = (req, res, next) => {
+const entryValidation = (req, res, next) => {
   const schema = {
     title: Joi.string().max(100).required(),
     description: Joi.string().min(150).max(2000).required(),
@@ -12,3 +12,4 @@ export const entryValidation = (req, res, next) => {
   }
   next();
 };
+export default entryValidation;

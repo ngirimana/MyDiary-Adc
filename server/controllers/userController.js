@@ -14,7 +14,7 @@ class UserController {
 
   static signUp = async (req, res) => {
     try {
-      let {
+      const {
         firstName,
         lastName,
         email,
@@ -24,9 +24,9 @@ class UserController {
       if (user[0]) {
         return response.errorResponse(res, 400, `${email} was already taken`);
       }
-      password = encryptPassword(password);
+      const hashedpassword = encryptPassword(password);
       const cols = 'firstName, lastName,email,password';
-      const userInfo = `'${firstName}', '${lastName}', '${email}', '${password}'`;
+      const userInfo = `'${firstName}', '${lastName}', '${email}', '${hashedpassword}'`;
       const row = await this.model().insert(cols, userInfo);
       const token = generateAuthToken(row[0].id, row[0].email);
       const data = {
