@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
@@ -6,7 +7,10 @@ import users from '../models/users';
 const { expect } = chai;
 chai.use(chaiHttp);
 
-
+const token = jwt.sign({
+  Id: 1,
+  userEmail: 'chadrack@gmail.com',
+}, process.env.SECRETEKEY);
 describe('0. Welcome', () => {
   it('should return welcome ', async () => {
     try {
@@ -111,8 +115,8 @@ describe('1 . POST signup,api/v2/auth/signup', () => {
         .set('Accept', 'application/json')
         .send(users[0]);
       expect(res.body).to.be.an('object');
-      expect(res.status).to.equal(400);
-      expect(res.body.status).to.equal(400);
+      expect(res.status).to.equal(409);
+      expect(res.body.status).to.equal(409);
       expect(res.body.error).to.equal('chadrack@gmail.com was already taken');
     } catch (error) {
       (() => { throw error; }).should.throw();
@@ -126,7 +130,7 @@ describe('1 . POST signup,api/v2/auth/signup', () => {
         .send(users[2]);
       expect(res.body).to.be.an('object');
       expect(res.status).to.equal(400);
-      expect(res.body.error).to.equal('"password" length must be at least 8 characters long');
+      expect(res.body.error).to.equal('"password" with value "safari" fails to match the required pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,20}$/');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
@@ -229,6 +233,25 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
       expect(res.body).to.be.an('object');
       expect(res.body.status).to.equal(400);
       expect(res.body.error).to.equal('"email" must be a valid email');
+    } catch (error) {
+      (() => { throw error; }).should.throw();
+    }
+  });
+});
+describe('2 .POST signin  api/v2/auth/signin', () => {
+  it('should return User profile data: ', async () => {
+    try {
+      const res = await chai.request(app)
+        .get('/api/v2/auth/profile')
+        .set('x-auth-token', token)
+        .set('Accept', 'application/json');
+      expect(res.body).to.be.an('object');
+      expect(res.status).to.equal(200);
+      expect(res.body.status).to.equal(200);
+      expect(res.body.message).to.equal('Your profile data are :');
+      expect(res.body.data.firstName).to.equal('NGIRIMANA');
+      expect(res.body.data.LastName).to.equal('schadrack');
+      expect(res.body.data.email).to.equal('chadrack@gmail.com');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }

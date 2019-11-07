@@ -9,19 +9,19 @@ chai.use(chaiHttp);
 let route;
 let slug;
 const emptyToken = '';
-let nonExistToken = jwt.sign({
+const nonExistToken = jwt.sign({
   Id: 70,
   userEmail: 'ngirimana@gmail.com',
 }, process.env.SECRETEKEY);
-let token = jwt.sign({
+const token = jwt.sign({
   Id: 1,
   userEmail: 'chadrack@gmail.com',
 }, process.env.SECRETEKEY);
-let notYoursToken = jwt.sign({
+const notYoursToken = jwt.sign({
   Id: 2,
   userEmail: 'safari@gmail.com',
 }, process.env.SECRETEKEY);
-let badroute = '/api/v2/entries/qwert345';
+const badroute = '/api/v2/entries/qwert345';
 const invalidToken = 'hsgbs shgbhsbd dhbfhsdbfbds fhsbhfbhsbfhbdsf sfdhsdbfdbshdbf';
 describe(' 3. POST entries ,/api/v2/entries', () => {
   it('should return "title" is required ', async () => {
@@ -136,9 +136,9 @@ describe(' 3. POST entries ,/api/v2/entries', () => {
         .set('x-auth-token', token)
         .set('Accept', 'application/json');
       expect(res.body).to.be.an('object');
-      expect(res.status).to.equal(404);
-      expect(res.body.status).to.equal(404);
-      expect(res.body.error).to.equal('Your entries  are not found!');
+      expect(res.status).to.equal(200);
+      expect(res.body.status).to.equal(200);
+      expect(res.body.message).to.equal('Your have no entries in you diary!');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
@@ -362,12 +362,6 @@ describe('7 . DELETE entries ,/api/v2/entries/:entrySlug', () => {
       expect(res.status).to.equal(200);
       expect(res.body.status).to.equal(200);
       expect(res.body.message).to.equal('entry successfully deleted');
-      expect(res.body.data).to.have.property('slug');
-      expect(res.body.data).to.have.property('created_on');
-      expect(res.body.data.user_id).to.equal(1);
-      expect(res.body.data.title).to.equal('rhehthhrt etthfhddb erhe rrhehrjwhejrh werhwehrjhwe wrehjwehrjwh');
-      expect(res.body.data.description).to.equal('hfhsf hsdbhahda bsasanjnsaj dbahsbdhaba fjsjng ssd gjndfg sfdnjsndf d adbhabdba dabdhbadba dadbhabddbad ABDHBJdj D HABFJDJF fnjsfn sfbbsjfsnf fnsjnfs sfnjsnf fsnfns sskdgdg dfgjndjfgnd fg');
-      expect(res.body.data).to.have.property('updated_on');
     } catch (error) {
       (() => { throw error; }).should.throw();
     }
