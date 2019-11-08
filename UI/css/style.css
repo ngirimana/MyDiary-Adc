@@ -516,6 +516,9 @@ input[type="submit"]:hover {
 .user-settings {
   padding-top: 30px;
 }
+#entry-sum {
+  font-size: 1rem;
+}
 .user-profile .user-image img {
   width: 50%;
   margin: 10px 25%;
