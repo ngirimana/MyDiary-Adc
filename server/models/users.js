@@ -5,7 +5,7 @@ const users = [
     firstName: 'NGIRIMANA',
     lastName: 'schadrack',
     email: 'chadrack@gmail.com',
-    password: 'safari1006',
+    password: 'Safari@1006',
   },
 
   //* 1 invalid data with wrong email
@@ -13,7 +13,7 @@ const users = [
     firstName: 'NGIRIMANA',
     lastName: 'schadrack',
     email: 'chadrack',
-    password: 'safari1006',
+    password: 'Safari@1006',
   },
   //* 2 user data with short password
   {
@@ -34,7 +34,7 @@ const users = [
   //* 4 correct signIn data
   {
     email: 'chadrack@gmail.com',
-    password: 'safari1006',
+    password: 'Safari@1006',
 
   },
   //* ***** 5 incorrect password for signin
@@ -85,7 +85,7 @@ const users = [
     firstName: 'rukundo',
     lastName: 'safari',
     email: 'safari@gmail.com',
-    password: 'safari1006',
+    password: 'sAfari#1006',
   },
 
 ];

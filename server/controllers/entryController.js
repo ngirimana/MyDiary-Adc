@@ -52,7 +52,7 @@ class EntryController {
     const userId = userIdFromToken(req.header('x-auth-token'));
     const userEntries = await this.entryModel().select('*', 'user_id=$1', [userId]);
     if (!userEntries.length) {
-      return responses.errorResponse(res, 404, 'Your entries  are not found!');
+      return responses.successResponse(res, 200, 'Your have no entries in you diary!', userEntries);
     }
     const data = userEntries;
     return responses.successResponse(res, 200, 'Your available entries are: ', data);
@@ -82,7 +82,7 @@ class EntryController {
       return responses.errorResponse(res, 403, 'This entry doesn\'t belongs to you');
     }
     await this.entryModel().delete('slug=$1', [entrySlug]);
-    return responses.successResponse(res, 200, 'entry successfully deleted', uniqueEntry[0]);
+    return responses.successResponse(res, 200, 'entry successfully deleted');
   }
 }
 export default EntryController;

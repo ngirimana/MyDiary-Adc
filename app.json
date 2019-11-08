@@ -83,6 +83,39 @@
         }
       }
     },
+    "/auth/profile":{
+      "get":{
+        "tags":["User profile data"],
+        "summary": "User profile data",
+        "description": "Get your user profile",
+        "operationId": "Profile",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "The value of user token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An entry with given Id was found",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
     "/entries": {
       "post": {
         "tags": ["Create entry"],
@@ -348,3 +381,4 @@
     }
   }
 }
+
