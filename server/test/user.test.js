@@ -238,7 +238,7 @@ describe('2 .POST signin  api/v2/auth/signin', () => {
     }
   });
 });
-describe('2 .POST signin  api/v2/auth/signin', () => {
+describe('3.GET profile data api/v2/auth/profile', () => {
   it('should return User profile data: ', async () => {
     try {
       const res = await chai.request(app)

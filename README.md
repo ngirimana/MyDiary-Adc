@@ -57,6 +57,7 @@ The project is composed of two different sections:
 | GET         | /api/v2/entries            | User can get all entries in his/her diary       |
 | GET         | /api//v2/entries/entrySlug | User can get specific entry in his/her diary    |
 | DELETE      | /api//v2/entries/entrySlug | User can delete specific entry in his/her diary |
+|GET          | /api/v2/auth/profile       | user can get his profile data and entries number in his diary|
 
 ### Installation
 
